@@ -9,6 +9,7 @@ import (
 type Config struct {
 	HTTP_PORT string
 	APP_ENV string
+	DB_URL string
 }
 
 
@@ -21,6 +22,7 @@ func Load() *Config {
 	return &Config {
 		HTTP_PORT: os.Getenv("HTTP_PORT"),
 		APP_ENV: os.Getenv("APP_ENV"),
+		DB_URL: os.Getenv("DB_URL"),
 	}
 
 }
