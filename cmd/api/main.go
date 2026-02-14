@@ -28,7 +28,7 @@ func main() {
 	// database
 	db, err := database.New(cfg)
 	if err != nil {
-		log.Fatal("Failed to connect db: ", err)
+		zlogs.Fatal("Failed to connect db: ", zap.Error(err))
 	}
 	defer db.Close()
 	zlogs.Info("Database connected");
@@ -42,10 +42,10 @@ func main() {
 		c.JSON(200, gin.H{"status": "ok"})
 	})
 
-	zlogs.Info("Server started", zap.String("port", cfg.HTTP_PORT))
+	zlogs.Info("Server started", zap.String("port", cfg.HTTPport))
 
 
-	err = router.Run(":" + cfg.HTTP_PORT)
+	err = router.Run(":" + cfg.HTTPport)
 	if err != nil {
 		log.Fatal("Failed to start server", zap.Error(err))
 	}

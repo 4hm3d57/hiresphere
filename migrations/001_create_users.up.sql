@@ -1,5 +1,5 @@
 CREATE TABLE users (
-    id UUID PRIMARY KEY,
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
     email TEXT UNIQUE NOT NULL,
 
@@ -7,6 +7,6 @@ CREATE TABLE users (
 
     role TEXT NOT NULL,
 
-    created_at TIMESTAMP NOT NULL
+    created_at TIMESTAMP NOT NULL DEFAULT now()
 
 );
