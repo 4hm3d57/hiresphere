@@ -16,11 +16,14 @@ import (
 
 
 func main() {
+	// configs
 	cfg := config.Load()
 
+	// logger
 	zlogs := logger.New()
 	defer zlogs.Sync()
-	
+
+	// gin http framework
 	router := gin.New()
 	router.Use(gin.Recovery())
 
